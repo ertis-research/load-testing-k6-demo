@@ -1,0 +1,26 @@
+apiVersion: k6.io/v1alpha1
+kind: K6
+metadata:
+  name: load-testing-k6
+spec:
+  parallelism: 20
+  script:
+    configMap:
+      name: k6-script
+      file: main.js
+  runner:
+    image: ghcr.io/ertis-research/k6-influx:main
+    imagePullPolicy: Always
+    env:
+      - name: K6_INFLUXDB_ORGANIZATION
+        value: primary
+      - name: K6_INFLUXDB_BUCKET
+        value: load-testing-k6
+      - name: K6_INFLUXDB_TOKEN
+        value: 57LU92Whbgc-ID_4NnC5wZlTMPGd55PCcS5KAepowS2qmyly3hHz0u-e9gkeoNvYwnGqFO5SOH46leScQWXuOA==
+      - name: K6_INFLUXDB_ADDR
+        value: "http://influxdb.influxdb:8086"
+      - name: K6_OUT
+        value: xk6-influxdb
+      - name: BASE_URL
+        value: "http://my-app:80"

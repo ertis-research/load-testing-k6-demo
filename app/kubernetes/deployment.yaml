@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: registry.ertis.uma.es/load-testing-k6-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          # resources:
+          #   requests:
+          #     cpu: "0.1"
+          #     memory: "128Mi"
+          #   limits:
+          #     cpu: "1"
+          #     memory: "512Mi"

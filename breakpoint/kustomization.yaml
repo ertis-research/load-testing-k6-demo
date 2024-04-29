@@ -1,0 +1,11 @@
+namespace: load-testing-k6
+
+resources:
+  - k6.yaml
+
+configMapGenerator:
+  - name: k6-script
+    files:
+      - main.js
+    options:
+      disableNameSuffixHash: true

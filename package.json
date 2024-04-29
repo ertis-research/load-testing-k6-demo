@@ -1,0 +1,17 @@
+{
+  "name": "k6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "kubectl apply -k app/kubernetes",
+    "operator": "kubectl apply -k operator",
+    "breakpoint": "kubectl apply -k breakpoint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/k6": "^0.46.3"
+  }
+}
